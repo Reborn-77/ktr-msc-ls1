@@ -29,6 +29,11 @@ class Login extends React.Component {
             this.setState({login: true})        
     }
 
+    logout = () => {
+        console.log("check")
+        this.setState({login: false})
+    }
+
     render() {
         return (
             <div>
@@ -41,7 +46,7 @@ class Login extends React.Component {
                 <Input.Password name="password" placeholder="Password" onChange={this.handleChange} /><br /><br />
                 <Button type="primary" onClick={this.login}>Connexion</Button> 
                 </div>}
-                {this.state.login && <Profile username={this.state.username} email={this.state.email} phone={this.state.phone} company_name={this.state.company_name}/>}
+                {this.state.login && <Profile username={this.state.username} email={this.state.email} phone={this.state.phone} company_name={this.state.company_name} logout={this.logout}/>}
             </div>
         )
     }

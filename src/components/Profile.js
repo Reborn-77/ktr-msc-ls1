@@ -66,7 +66,11 @@ class Profile extends React.Component {
                 <br />
                 <Button type="primary"  prefix={<PlusSquareOutlined />} onClick={this.showModal}>
                     Add card
-                </Button>                  
+                </Button> 
+                <br /><br />
+                <Button type="danger"  prefix={<PlusSquareOutlined />} onClick={this.props.logout}>
+                    Logout
+                </Button>                     
                 <br/><br/>
                 <h1>Library</h1>
                 <List
