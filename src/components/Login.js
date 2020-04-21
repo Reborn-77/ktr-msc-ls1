@@ -21,8 +21,12 @@ class Login extends React.Component {
     };
 
     login = () => {
+        const re = /^[0-9\b]+$/;
+
         if (this.state.username === '' || this.state.username === null)
-            message.error('Please enter a valid username')            
+            message.error('Please enter a valid username')          
+        else if (re.test(this.state.phone) === false && this.state.phone !== '') 
+            message.error('A phone number can only contain numbers')       
         else if (this.state.password !== "Epitech")
             message.info('The password is Epitech')          
         else 
@@ -31,7 +35,13 @@ class Login extends React.Component {
 
     logout = () => {
         console.log("check")
-        this.setState({login: false})
+        this.setState({
+            login: false,
+            company_name: '',
+            email: '',
+            phone: '',
+            password: ''
+        })
     }
 
     render() {
@@ -39,7 +49,7 @@ class Login extends React.Component {
             <div>
                 {!this.state.login && <div>
                 <h1>Create Profile</h1>
-                <Input name="username" placeholder="Username" prefix={<UserOutlined />} onChange={this.handleChange} /><br /><br />
+                <Input name="username" placeholder="Username" value={this.state.username} prefix={<UserOutlined />} onChange={this.handleChange} /><br /><br />
                 <Input name="company_name" placeholder="Company name" onChange={this.handleChange} /><br /><br />
                 <Input name="email" placeholder="Email adress" onChange={this.handleChange} /><br /><br />
                 <Input name="phone" placeholder="Phone number" onChange={this.handleChange} /><br /><br /> 
